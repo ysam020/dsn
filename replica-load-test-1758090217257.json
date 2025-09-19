@@ -1,0 +1,709 @@
+{
+  "timestamp": "2025-09-17T06:23:37.257Z",
+  "testType": "REPLICA_LOAD_BALANCING_TEST",
+  "target": "800_RPS",
+  "targetAchieved": true,
+  "results": [
+    {
+      "testName": "Baseline",
+      "connections": 300,
+      "duration": 15049,
+      "rps": 1332,
+      "expectedRPS": 2000,
+      "latency": {
+        "average": 123.22,
+        "p99": 1209
+      },
+      "reliability": {
+        "successRate": 99.93992791349619,
+        "errors": 0,
+        "timeouts": 0,
+        "totalRequests": 19976
+      },
+      "poolStats": {
+        "before": {
+          "global": {
+            "totalConnections": 0,
+            "activeConnections": 0,
+            "connectionReuses": 0,
+            "poolsCreated": 0,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 0,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {},
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 0,
+              "india_customer_read_1": 0,
+              "india_customer_read_2": 0,
+              "india_customer_read_3": 0
+            }
+          },
+          "activeRequestConnections": 0
+        },
+        "after": {
+          "global": {
+            "totalConnections": 111,
+            "activeConnections": 32,
+            "connectionReuses": 11787,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 4311,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 27,
+              "activeConnections": 8,
+              "idleConnections": 19,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 36,
+              "activeConnections": 12,
+              "idleConnections": 24,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 24,
+              "activeConnections": 7,
+              "idleConnections": 17,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 24,
+              "activeConnections": 5,
+              "idleConnections": 19,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 1070,
+              "india_customer_read_1": 1065,
+              "india_customer_read_2": 1085,
+              "india_customer_read_3": 1091
+            }
+          },
+          "activeRequestConnections": 5
+        },
+        "connectionGrowth": 111
+      },
+      "loadBalancing": {
+        "beforeDistribution": {
+          "india_customer_read_0": 0,
+          "india_customer_read_1": 0,
+          "india_customer_read_2": 0,
+          "india_customer_read_3": 0
+        },
+        "afterDistribution": {
+          "india_customer_read_0": 1070,
+          "india_customer_read_1": 1065,
+          "india_customer_read_2": 1085,
+          "india_customer_read_3": 1091
+        },
+        "healthyReplicas": 4,
+        "readWriteRatio": "All reads"
+      },
+      "success": true
+    },
+    {
+      "testName": "Light Load",
+      "connections": 800,
+      "duration": 15098,
+      "rps": 1325,
+      "expectedRPS": 2000,
+      "latency": {
+        "average": 145.61,
+        "p99": 3658
+      },
+      "reliability": {
+        "successRate": 99.9597423510467,
+        "errors": 0,
+        "timeouts": 0,
+        "totalRequests": 19872
+      },
+      "poolStats": {
+        "before": {
+          "global": {
+            "totalConnections": 111,
+            "activeConnections": 27,
+            "connectionReuses": 11952,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 4436,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 27,
+              "activeConnections": 8,
+              "idleConnections": 19,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 36,
+              "activeConnections": 11,
+              "idleConnections": 25,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 24,
+              "activeConnections": 4,
+              "idleConnections": 20,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 24,
+              "activeConnections": 4,
+              "idleConnections": 20,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 1099,
+              "india_customer_read_1": 1096,
+              "india_customer_read_2": 1117,
+              "india_customer_read_3": 1124
+            }
+          },
+          "activeRequestConnections": 0
+        },
+        "after": {
+          "global": {
+            "totalConnections": 113,
+            "activeConnections": 30,
+            "connectionReuses": 23581,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 8606,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 27,
+              "activeConnections": 10,
+              "idleConnections": 17,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 36,
+              "activeConnections": 12,
+              "idleConnections": 24,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 24,
+              "activeConnections": 4,
+              "idleConnections": 20,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 26,
+              "activeConnections": 4,
+              "idleConnections": 22,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 2105,
+              "india_customer_read_1": 2203,
+              "india_customer_read_2": 2142,
+              "india_customer_read_3": 2156
+            }
+          },
+          "activeRequestConnections": 3
+        },
+        "connectionGrowth": 2
+      },
+      "loadBalancing": {
+        "beforeDistribution": {
+          "india_customer_read_0": 1099,
+          "india_customer_read_1": 1096,
+          "india_customer_read_2": 1117,
+          "india_customer_read_3": 1124
+        },
+        "afterDistribution": {
+          "india_customer_read_0": 2105,
+          "india_customer_read_1": 2203,
+          "india_customer_read_2": 2142,
+          "india_customer_read_3": 2156
+        },
+        "healthyReplicas": 4,
+        "readWriteRatio": "All reads"
+      },
+      "success": true
+    },
+    {
+      "testName": "Medium Load",
+      "connections": 1200,
+      "duration": 15095,
+      "rps": 1372,
+      "expectedRPS": 2000,
+      "latency": {
+        "average": 483.67,
+        "p99": 8355
+      },
+      "reliability": {
+        "successRate": 99.10124368441508,
+        "errors": 0,
+        "timeouts": 0,
+        "totalRequests": 20584
+      },
+      "poolStats": {
+        "before": {
+          "global": {
+            "totalConnections": 113,
+            "activeConnections": 27,
+            "connectionReuses": 24139,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 8947,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 27,
+              "activeConnections": 8,
+              "idleConnections": 19,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 36,
+              "activeConnections": 11,
+              "idleConnections": 25,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 24,
+              "activeConnections": 4,
+              "idleConnections": 20,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 26,
+              "activeConnections": 4,
+              "idleConnections": 22,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 2183,
+              "india_customer_read_1": 2289,
+              "india_customer_read_2": 2228,
+              "india_customer_read_3": 2247
+            }
+          },
+          "activeRequestConnections": 0
+        },
+        "after": {
+          "global": {
+            "totalConnections": 127,
+            "activeConnections": 103,
+            "connectionReuses": 35797,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 13139,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 29,
+              "activeConnections": 29,
+              "idleConnections": 0,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 39,
+              "activeConnections": 29,
+              "idleConnections": 10,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 33,
+              "activeConnections": 19,
+              "idleConnections": 14,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 26,
+              "activeConnections": 26,
+              "idleConnections": 0,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 3292,
+              "india_customer_read_1": 3309,
+              "india_customer_read_2": 3227,
+              "india_customer_read_3": 3311
+            }
+          },
+          "activeRequestConnections": 75
+        },
+        "connectionGrowth": 14
+      },
+      "loadBalancing": {
+        "beforeDistribution": {
+          "india_customer_read_0": 2183,
+          "india_customer_read_1": 2289,
+          "india_customer_read_2": 2228,
+          "india_customer_read_3": 2247
+        },
+        "afterDistribution": {
+          "india_customer_read_0": 3292,
+          "india_customer_read_1": 3309,
+          "india_customer_read_2": 3227,
+          "india_customer_read_3": 3311
+        },
+        "healthyReplicas": 4,
+        "readWriteRatio": "All reads"
+      },
+      "success": true
+    },
+    {
+      "testName": "Heavy Load",
+      "connections": 1500,
+      "duration": 15103,
+      "rps": 1279,
+      "expectedRPS": 2000,
+      "latency": {
+        "average": 630.13,
+        "p99": 8550
+      },
+      "reliability": {
+        "successRate": 98.89010473659528,
+        "errors": 0,
+        "timeouts": 0,
+        "totalRequests": 19191
+      },
+      "poolStats": {
+        "before": {
+          "global": {
+            "totalConnections": 134,
+            "activeConnections": 32,
+            "connectionReuses": 36301,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 13313,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 33,
+              "activeConnections": 9,
+              "idleConnections": 24,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 39,
+              "activeConnections": 12,
+              "idleConnections": 27,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 33,
+              "activeConnections": 4,
+              "idleConnections": 29,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 29,
+              "activeConnections": 7,
+              "idleConnections": 22,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 3330,
+              "india_customer_read_1": 3355,
+              "india_customer_read_2": 3270,
+              "india_customer_read_3": 3358
+            }
+          },
+          "activeRequestConnections": 0
+        },
+        "after": {
+          "global": {
+            "totalConnections": 142,
+            "activeConnections": 64,
+            "connectionReuses": 47108,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 17228,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 34,
+              "activeConnections": 21,
+              "idleConnections": 13,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 39,
+              "activeConnections": 18,
+              "idleConnections": 21,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 35,
+              "activeConnections": 12,
+              "idleConnections": 23,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 34,
+              "activeConnections": 13,
+              "idleConnections": 21,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 4327,
+              "india_customer_read_1": 4329,
+              "india_customer_read_2": 4249,
+              "india_customer_read_3": 4323
+            }
+          },
+          "activeRequestConnections": 32
+        },
+        "connectionGrowth": 8
+      },
+      "loadBalancing": {
+        "beforeDistribution": {
+          "india_customer_read_0": 3330,
+          "india_customer_read_1": 3355,
+          "india_customer_read_2": 3270,
+          "india_customer_read_3": 3358
+        },
+        "afterDistribution": {
+          "india_customer_read_0": 4327,
+          "india_customer_read_1": 4329,
+          "india_customer_read_2": 4249,
+          "india_customer_read_3": 4323
+        },
+        "healthyReplicas": 4,
+        "readWriteRatio": "All reads"
+      },
+      "success": true
+    },
+    {
+      "testName": "Extreme Load",
+      "connections": 2000,
+      "duration": 15129,
+      "rps": 1227,
+      "expectedRPS": 2000,
+      "latency": {
+        "average": 839.82,
+        "p99": 8738
+      },
+      "reliability": {
+        "successRate": 98.83758826724606,
+        "errors": 0,
+        "timeouts": 0,
+        "totalRequests": 18410
+      },
+      "poolStats": {
+        "before": {
+          "global": {
+            "totalConnections": 142,
+            "activeConnections": 32,
+            "connectionReuses": 47799,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 17461,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 34,
+              "activeConnections": 9,
+              "idleConnections": 25,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 39,
+              "activeConnections": 12,
+              "idleConnections": 27,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 35,
+              "activeConnections": 4,
+              "idleConnections": 31,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 34,
+              "activeConnections": 7,
+              "idleConnections": 27,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 4374,
+              "india_customer_read_1": 4387,
+              "india_customer_read_2": 4314,
+              "india_customer_read_3": 4386
+            }
+          },
+          "activeRequestConnections": 0
+        },
+        "after": {
+          "global": {
+            "totalConnections": 177,
+            "activeConnections": 39,
+            "connectionReuses": 57926,
+            "poolsCreated": 4,
+            "connectionsExpired": 0,
+            "requestsQueued": 0,
+            "requestsRejected": 0,
+            "readRequests": 21207,
+            "writeRequests": 0,
+            "replicaHits": {}
+          },
+          "pools": {
+            "india_customer_india_customer_read_2": {
+              "totalConnections": 45,
+              "activeConnections": 11,
+              "idleConnections": 34,
+              "replicaId": "india_customer_read_2"
+            },
+            "india_customer_india_customer_read_3": {
+              "totalConnections": 48,
+              "activeConnections": 13,
+              "idleConnections": 35,
+              "replicaId": "india_customer_read_3"
+            },
+            "india_customer_india_customer_read_0": {
+              "totalConnections": 41,
+              "activeConnections": 4,
+              "idleConnections": 37,
+              "replicaId": "india_customer_read_0"
+            },
+            "india_customer_india_customer_read_1": {
+              "totalConnections": 43,
+              "activeConnections": 11,
+              "idleConnections": 32,
+              "replicaId": "india_customer_read_1"
+            }
+          },
+          "loadBalancer": {
+            "healthyReplicas": 4,
+            "totalReplicas": 4,
+            "replicaDistribution": {
+              "india_customer_read_0": 5285,
+              "india_customer_read_1": 5326,
+              "india_customer_read_2": 5242,
+              "india_customer_read_3": 5354
+            }
+          },
+          "activeRequestConnections": 4
+        },
+        "connectionGrowth": 35
+      },
+      "loadBalancing": {
+        "beforeDistribution": {
+          "india_customer_read_0": 4374,
+          "india_customer_read_1": 4387,
+          "india_customer_read_2": 4314,
+          "india_customer_read_3": 4386
+        },
+        "afterDistribution": {
+          "india_customer_read_0": 5285,
+          "india_customer_read_1": 5326,
+          "india_customer_read_2": 5242,
+          "india_customer_read_3": 5354
+        },
+        "healthyReplicas": 4,
+        "readWriteRatio": "All reads"
+      },
+      "success": true
+    }
+  ],
+  "analysis": {
+    "summary": {
+      "totalTests": 5,
+      "successfulTests": 5,
+      "targetAchieved": true,
+      "maxRPSAchieved": 1372,
+      "maxSuccessfulConnections": 2000,
+      "maxSuccessfulRPS": 1227
+    },
+    "replicaPerformance": {
+      "loadBalancingEffective": true,
+      "replicaUtilization": {
+        "totalRequests": 21207,
+        "replicaCount": 4,
+        "averagePerReplica": 5302,
+        "loadBalance": "Well balanced",
+        "distribution": {
+          "india_customer_read_0": 5285,
+          "india_customer_read_1": 5326,
+          "india_customer_read_2": 5242,
+          "india_customer_read_3": 5354
+        }
+      },
+      "readWritePattern": "All reads"
+    },
+    "recommendations": [
+      "🎉 SUCCESS: 800 RPS target achieved!",
+      "✅ Maximum RPS: 1372",
+      "✅ Read replica load balancing is working effectively"
+    ]
+  }
+}
