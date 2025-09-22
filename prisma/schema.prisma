@@ -1,16 +1,75 @@
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "postgresql"
+//   url      = env("INDIA_CUSTOMER_WRITE_DB_URI")
+// }
+
+// model User {
+//   id         Int     @id @default(autoincrement())
+//   user_id    Int     @unique
+//   name       String
+//   email      String  @unique
+//   department String?
+//   status     String  @default("active")
+
+//   // Relationships
+//   attendance Attendance[]
+//   leaves     Leave[]
+
+//   @@map("users")
+// }
+
+// model Attendance {
+//   id        Int     @id @default(autoincrement())
+//   user_id   Int
+//   month     String
+//   date      String
+//   check_in  String?
+//   check_out String?
+//   hours     Float?
+//   status    String  @default("present")
+
+//   // Relationships
+//   user User @relation(fields: [user_id], references: [user_id])
+
+//   @@index([user_id, month])
+//   @@map("attendance")
+// }
+
+// model Leave {
+//   id         Int     @id @default(autoincrement())
+//   user_id    Int
+//   month      String
+//   type       String
+//   start_date String  @map("start_date")
+//   end_date   String  @map("end_date")
+//   days       Int
+//   reason     String?
+//   status     String  @default("approved")
+
+//   // Relationships
+//   user User @relation(fields: [user_id], references: [user_id])
+
+//   @@index([user_id, month])
+//   @@map("leaves")
+// }
+
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
-  url      = env("INDIA_CUSTOMER_WRITE_DB_URI")
+  url      = env("POSTGRES_ANALYTICS")
 }
 
 model User {
   id         Int     @id @default(autoincrement())
   user_id    Int     @unique
-  name       String
+  full_name  String
   email      String  @unique
   department String?
   status     String  @default("active")
@@ -23,36 +82,36 @@ model User {
 }
 
 model Attendance {
-  id        Int     @id @default(autoincrement())
-  user_id   Int
-  month     String
-  date      String
-  check_in  String?
-  check_out String?
-  hours     Float?
-  status    String  @default("present")
+  id               Int     @id @default(autoincrement())
+  user_id          Int
+  attendance_month String
+  date             String
+  check_in         String?
+  check_out        String?
+  hours            Float?
+  status           String  @default("present")
 
   // Relationships
   user User @relation(fields: [user_id], references: [user_id])
 
-  @@index([user_id, month])
+  @@index([user_id, attendance_month])
   @@map("attendance")
 }
 
 model Leave {
-  id         Int     @id @default(autoincrement())
-  user_id    Int
-  month      String
-  type       String
-  start_date String  @map("start_date")
-  end_date   String  @map("end_date")
-  days       Int
-  reason     String?
-  status     String  @default("approved")
+  id               Int     @id @default(autoincrement())
+  user_id          Int
+  attendance_month String
+  type             String
+  start_date       String  @map("start_date")
+  end_date         String  @map("end_date")
+  days             Int
+  reason           String?
+  status           String  @default("approved")
 
   // Relationships
   user User @relation(fields: [user_id], references: [user_id])
 
-  @@index([user_id, month])
+  @@index([user_id, attendance_month])
   @@map("leaves")
 }

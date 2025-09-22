@@ -32,16 +32,6 @@ class PrismaReplicaLoadTester {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  async getStats() {
-    try {
-      const response = await axios.get(`${this.baseUrl}/stats`);
-      return response.data;
-    } catch (error) {
-      console.warn(`[TEST] Could not get stats: ${error.message}`);
-      return null;
-    }
-  }
-
   async runSingleTest(testConfig, resetBefore = false) {
     const { name, connections, duration, endpoint, expectedRPS } = testConfig;
 
@@ -56,9 +46,6 @@ class PrismaReplicaLoadTester {
         console.log(`[TEST] Waiting for system stabilization...`);
         await this.sleep(this.coolDownConfig.beforeCleanup);
       }
-
-      // Get baseline stats
-      const beforeStats = await this.getStats();
 
       // Run the load test
       const startTime = Date.now();
@@ -75,9 +62,6 @@ class PrismaReplicaLoadTester {
       });
 
       const testDuration = Date.now() - startTime;
-
-      // Get post-test stats
-      const afterStats = await this.getStats();
 
       // Calculate metrics
       const metrics = {
@@ -109,10 +93,6 @@ class PrismaReplicaLoadTester {
           status3xx: result["3xx"] || 0,
           status4xx: result["4xx"] || 0,
           status5xx: result["5xx"] || 0,
-        },
-        prismaStats: {
-          before: beforeStats,
-          after: afterStats,
         },
       };
 
